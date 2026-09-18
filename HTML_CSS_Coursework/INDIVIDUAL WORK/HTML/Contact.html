@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact</title>
+    <meta name="description" content="Site pentru a vinde produse- Florărie" />
+    <meta name="keywords" content="Site pentru a vinde produse" />
+    <meta name="author" content="Șevcenco Irina" />
+    <link rel="shortcut icon" href="Imagini/ico.png">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Florăria "Mâna cu Flori"</h1>
+        <p>O floare pentru un zâmbet cald</p>
+    </header>
+
+    <nav class="nav nav-desktop">
+        <ul class="menu">
+            <li><a href="../index.html">Acasă</a></li>
+            <li class="has-sub">
+                <a href="">Produse ▾</a>
+                <ul class="submenu">
+                    <li><a href="Buchete.html">Buchete</a></li>
+                    <li><a href="Aranjamente.html">Aranjamente</a></li>
+                </ul>
+            </li>
+            <li><a href="Despre noi.html">Despre noi</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <nav class="nav nav-tablet">
+        <ul class="menu-vertical">
+            <li><a href="../index.html">Acasă</a></li>
+            <li>
+                <b>Produse</b>
+                <ul>
+                    <li><a href="Buchete.html">Buchete</a></li>
+                    <li><a href="Aranjamente.html">Aranjamente</a></li>
+                </ul>
+            </li>
+            <li><a href="Despre noi.html">Despre noi</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <nav class="nav nav-mobile">
+        <details>
+            <summary>Meniu</summary>
+            <ul class="mobile-list">
+                <li><a href="../index.html">Acasă</a></li>
+                <li>
+                    <details>
+                        <summary>Produse</summary>
+                        <ul>
+                            <li><a href="Buchete.html">Buchete</a></li>
+                            <li><a href="Aranjamente.html">Aranjamente</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li><a href="Despre noi.html">Despre noi</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </details>
+    </nav>
+
+    <main>
+        <h2>Contactează-ne</h2>
+        <p>Ne poți scrie direct folosind formularul de mai jos sau ne poți 
+            găsi la adresa indicată.</p><br>
+        
+
+        <div class="contact-container">
+            <form class="contact-form">
+                <label for="nume">Nume:</label>
+                <input type="text" id="nume" name="nume" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mesaj">Mesaj:</label>
+                <textarea id="mesaj" name="mesaj" rows="5" required></textarea>
+
+                <button type="submit">Trimite mesajul</button>
+                <button type="reset">Șterge</button>
+
+            </form>
+
+            <div class="contact-info">
+                <h3>Date de contact</h3>
+                <p><b>Adresă:</b> Str. Florilor 12, Chișinău, Republica Moldova</p>
+                <p><b>Telefon:</b> +373 60 123 456</p>
+                <p><b>Email:</b> contact@manacuflori.md</p>
+                
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.342650557554!2d28.85793839999999!3d47.05312839999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97d02a1eff439%3A0xaf30a5b57cf44eb2!2sFlorilor%20St%2012%2C%20Chi%C8%99in%C4%83u%2C%20Moldova!5e0!3m2!1sen!2s!4v1762966495995!5m2!1sen!2s" 
+                    width="100%" height="250"></iframe>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>Urmărește-ne:</p>
+        <div class="socials">
+            <a href="https://facebook.com" class="social social-1"></a>
+            <a href="https://instagram.com" class="social social-2"></a>
+            <a href="https://twitter.com" class="social social-3"></a>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Florărie - Site pentru a vinde produse</title>
+    <meta name="description" content="Site pentru a vinde produse- Florărie" />
+    <meta name="keywords" content="Site pentru a vinde produse" />
+    <meta name="author" content="Șevcenco Irina" />
+    <link rel="shortcut icon" href="Imagini/ico.png">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Florăria "Mâna cu Flori"</h1>
+        <p>O floare pentru un zâmbet cald</p>
+    </header>
+
+    <!-- Meniu pentru ecrane mari (desktop)  -->
+    <nav class="nav nav-desktop">
+        <ul class="menu">
+            <li><a href="index.html">Acasă</a></li>
+            <li class="has-sub">
+                <a href="">Produse ▾</a>
+                <ul class="submenu">
+                    <li><a href="/HTML/Buchete.html">Buchete</a></li>
+                    <li><a href="/HTML/Aranjamente.html">Aranjamente</a></li>
+                </ul>
+            </li>
+            <li><a href="/HTML/Despre noi.html">Despre noi</a></li>
+            <li><a href="/HTML/Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Meniu pentru ecrane medii (tablet)-->
+    <nav class="nav nav-tablet">
+        <ul class="menu-vertical">
+            <li><a href="index.html">Acasă</a></li>
+            <li>
+                <b>Produse</b>
+                <ul>
+                    <li><a href="/HTML/Buchete.html">Buchete</a></li>
+                    <li><a href="/HTML/Aranjamente.html">Aranjamente</a></li>
+                </ul>
+            </li>
+            <li><a href="/HTML/Despre noi.html">Despre noi</a></li>
+            <li><a href="/HTML/Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Meniu pentru ecrane mici (mobil-->
+    <nav class="nav nav-mobile">
+        <details>
+            <summary>Meniu</summary>
+            <ul class="mobile-list">
+                <li><a href="index.html">Acasă</a></li>
+                <li>
+                    <details>
+                        <summary>Produse</summary>
+                        <ul>
+                            <li><a href="/HTML/Buchete.html">Buchete</a></li>
+                            <li><a href="/HTML/Aranjamente.html">Aranjamente</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li><a href="/HTML/Despre noi.html">Despre noi</a></li>
+                <li><a href="/HTML/Contact.html">Contact</a></li>
+            </ul>
+        </details>
+    </nav>
+
+    <main>
+        <h2>Bine ați venit la Florăria noastră</h2>
+        <p>Galeria de mai jos afișează imagini cu produsele noastre:</p>
+
+        <section class="gallery-section">
+            <h3>Galerie</h3> <br>
+            <div class="gallery">
+                <img src="Imagini/buchet1.jpg" alt="Buchet 1" class="gallery-img">
+                <img src="Imagini/buchet2.jpg" alt="Buchet 2" class="gallery-img">
+                <img src="Imagini/buchet3.jpg" alt="Buchet 3" class="gallery-img">
+                <img src="Imagini/buchet4.jpg" alt="Buchet 4" class="gallery-img">
+                <img src="Imagini/buchet5.jpg" alt="Buchet 5" class="gallery-img">
+                <img src="Imagini/buchet6.jpg" alt="Buchet 6" class="gallery-img">
+            </div>
+        </section>
+
+        <br>
+            <h2>Ce spun clienții?</h2>
+            <blockquote>"Buchet superb și livrare rapidă!" — Ana</blockquote>
+            <blockquote>"Calitate excelentă, recomand." — Igor</blockquote>
+
+        <br>        
+
+        <h2>Informații utile:</h2>
+        <p><b>Telefon:</b>+373 60 123 456</p>
+        <p><b>Program:</b> Luni–Sâmbătă: 09:00–18:00, Duminică: închis</p>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Urmărește-ne:</p>
+        <div class="socials">
+            <a href="https://facebook.com" class="social social-1"></a>
+            <a href="https://instagram.com" class="social social-2"></a>
+            <a href="https://twitter.com" class="social social-3"></a>
+        </div>
+    </footer>
+
+</body>
+</html>

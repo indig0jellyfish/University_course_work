@@ -1,0 +1,356 @@
+* { 
+  box-sizing: border-box; margin: 0; padding: 0; 
+}
+body { 
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; ; 
+  padding: 40px; 
+  background: linear-gradient(white, pink); 
+  color: rgb(118, 46, 46); 
+  list-style-position: inside;
+}
+body::selection{
+  color: rgb(209, 183, 183);
+  background-color: rgb(118, 46, 46); ;
+}
+.site-header { 
+  text-align: center; 
+  padding: 10px 0 20px 0; 
+  color: rgb(118, 46, 46);
+}
+.site-header h1 { 
+  font-size: 28px; 
+}
+
+
+/* ascundem inițial toate versiunile și afișăm una singură */
+.nav { 
+  margin-bottom: 15px; 
+}
+.nav-desktop, .nav-tablet, .nav-mobile { 
+  display: none; 
+}
+
+
+/* Meniu desktop: orizontal cu dropdown la hover */
+.menu { 
+  list-style: none; 
+  display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+}
+.menu li { 
+  position: relative; /* lista de produse se afiseaza sub produse*/
+}
+.menu a { /* elemente menu */
+  text-decoration: none; 
+  padding: 8px 12px; 
+  display: inline-block; 
+  color: rgb(118, 46, 46); 
+  background: #ffffff; 
+  border-radius: 4px; 
+}
+.menu a:hover { 
+  background: #ffdede; 
+}
+.submenu { 
+  position: absolute; 
+  left: 0; 
+  top: 36px; 
+  list-style: none; 
+  display: none; 
+  padding: 8px; 
+  background: #fff; 
+  border-radius: 4px; 
+  box-shadow: 0 1px 3px rgba(201, 77, 77, 0.49); 
+}
+.submenu li { 
+  margin: 6px 0; 
+}
+.has-sub:hover .submenu { 
+  display: block; 
+}
+
+/* Meniu tableta */
+.menu-vertical { 
+  list-style: none; 
+  max-width: 250px; 
+  margin: 0 auto; 
+  color: rgb(118, 46, 46);
+}
+.menu-vertical li { 
+  padding: 6px 0; 
+}
+.menu-vertical a { 
+  text-decoration: none; 
+  color: rgb(118, 46, 46); 
+}
+.menu-vertical strong { 
+  display: block; 
+  margin-bottom: 6px; 
+  color: rgb(118, 46, 46); 
+}
+.menu-vertical ul { 
+  list-style: none; 
+  padding-left: 12px; 
+}
+
+
+/* Meniu mobile */
+.mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-list li {
+  list-style: none;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.mobile-list a {
+  display: block;
+  padding: 8px 0 8px 13px;
+  text-decoration: none;
+  color: rgb(118, 46, 46);
+}
+
+/* galerie */
+.gallery-section { 
+  margin-top: 10px; 
+}
+.gallery { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  justify-content: center; 
+}
+.gallery-img { 
+  width: 30%; 
+  height: 150px; 
+  object-fit: cover; 
+  border-radius: 6px; 
+  border: 1px solid #e0cfcf; 
+}
+.gallery-img:hover {
+  filter: invert(90%) sepia(30%);
+}
+
+
+/* footer social (sprite) */
+.site-footer {
+  margin-top: 20px;
+  text-align: center;
+  padding: 12px 0;
+  border-top: 1px solid #f0e0e0;
+}
+.socials {
+  margin: 8px 0;
+}
+
+/* link-urile care afișează icoana din sprite */
+.social {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background-image: url('../Imagini/Socials.png'); 
+  background-repeat: no-repeat;
+  margin: 0 6px;
+  position: relative;
+}
+
+/* pozitiile pentru cele 3 icons */
+.social-1 { 
+  background-position: 0 0; 
+}
+.social-2 { 
+  background-position: -48px 0; 
+}
+.social-3 { 
+  background-position: -96px 0; 
+}
+
+/* Mobile: ecrane mici până la 599px */
+@media (max-width: 599px) {
+  .nav-mobile { 
+    display: block; 
+  }
+  .gallery-img { 
+    width: 100%; 
+    height: 140px; 
+  }
+}
+
+/* Tablet: 600px - 899px */
+@media (min-width: 600px) and (max-width: 899px) {
+  .nav-tablet { 
+    display: block; 
+  }
+  .gallery-img { 
+    width: 48%; 
+    height: 150px; 
+  }
+}
+
+
+/* Desktop: 900px și mai mult */
+@media (min-width: 900px) {
+  .nav-desktop { 
+    display: block; 
+  }
+  .gallery-img { 
+    width: 30%; 
+    height: 180px; 
+  }
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.contact-form {
+  flex: 1 1 300px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #b5a2a2;
+  border-radius: 5px;
+}
+
+.contact-form textarea:focus, .contact-form input:focus {
+  background-color: #faf7f7;
+}
+
+.contact-form button {
+  margin-top: 15px;
+  background-color: rgb(118, 46, 46);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.about-us {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.us-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.team-list {
+  display: flex;
+  justify-content: center;
+  gap: 12px;      
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.team-item {
+  flex: 0 1 400px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #e2c3c3;
+  border-radius: 6px;
+}
+
+.team-photo {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .team-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .team-item {
+    width: 90%;
+    max-width: 360px;
+    flex-basis: auto;
+  }
+}
+
+.arr-grid {
+  display: grid;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 16px auto;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.product-photo {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.prod { 
+  font-size: 15px; 
+  color: rgb(118,46,46); 
+  margin: 6px 0; 
+}
+.care { 
+  font-size: 12px; 
+  color: rgb(118,46,46); 
+  margin-bottom: 8px; 
+}
+
+.add-to-cart {
+  background: rgb(118,46,46);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.order-now {
+  text-decoration: none;
+  color: rgb(118,46,46);
+  font-weight: bold;
+  padding-left: 7px;
+}
+
+@media (max-width: 420px) {
+  .product-photo { height: 290px; }
+}
