@@ -1,0 +1,86 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrome Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Palindrome Checker</h1>
+
+  <input id="text-input" type="text" placeholder="Enter text here">
+  <button id="check-btn">Check</button>
+
+  <p id="result"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 80px;
+}
+
+input {
+  padding: 8px;
+  width: 250px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const textInput = document.getElementById("text-input");
+const checkBtn = document.getElementById("check-btn");
+const result = document.getElementById("result");
+
+checkBtn.addEventListener("click", () => {
+  const originalText = textInput.value;
+
+  // If empty, show alert
+  if (!originalText) {
+    alert("Please input a value");
+    return;
+  }
+
+  // Remove non-alphanumeric characters and convert to lowercase
+  const cleanedText = originalText
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+  // Reverse cleaned text
+  const reversedText = cleanedText
+    .split("")
+    .reverse()
+    .join("");
+
+  // Check palindrome
+  if (cleanedText === reversedText) {
+    result.textContent = `${originalText} is a palindrome`;
+  } else {
+    result.textContent = `${originalText} is not a palindrome`;
+  }
+});
+
+** end of script.js **
+

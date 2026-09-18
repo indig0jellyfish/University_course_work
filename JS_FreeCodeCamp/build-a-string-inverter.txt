@@ -1,0 +1,8 @@
+** start of script.js **
+
+const reverseString = (str) =>{
+  return str.split('').reverse().join('');
+}
+
+** end of script.js **
+

@@ -1,0 +1,137 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Markdown to HTML Converter</h1>
+    <div id="container">
+        <div class="container">
+            <h2>Markdown Input:</h2>
+            <textarea id="markdown-input" placeholder="Enter your markdown here..."></textarea>
+        </div>
+        <div class="container">
+            <h2>Raw HTML Output:</h2>
+            <div id="html-output"></div>
+        </div>
+        <div class="container">
+            <h2>HTML Preview:</h2>
+            <div id="preview"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+* {
+     box-sizing: border-box;
+}
+ body {
+     font-family: Arial, sans-serif;
+     padding: 20px;
+}
+ #markdown-input {
+     width: 100%;
+     height: 100px;
+}
+ #html-output, #preview {
+     height: 100px;
+     display: inline-block;
+     width: 100%;
+     border: 1px solid #ccc;
+     padding: 10px;
+     margin: auto;
+     white-space: pre-wrap;
+     background-color: #f9f9f9;
+}
+ @media (min-width: 600px) {
+     #markdown-input, #html-output, #preview {
+         height: 200px;
+         margin: 0;
+    }
+     #container {
+         display: flex;
+         justify-content: space-evenly;
+         gap: 10px;
+    }
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const markdownInput = document.getElementById("markdown-input");
+const htmlOutput = document.getElementById("html-output");
+const preview = document.getElementById("preview");
+
+function convertMarkdown() {
+  let text = markdownInput.value;
+
+  const lines = text.split("\n");
+  let result = "";
+
+  for (let line of lines) {
+
+    // h3
+    line = line.replace(/^\s*###\s+(.*)/, "<h3>$1</h3>");
+
+    // h2
+    line = line.replace(/^\s*##\s+(.*)/, "<h2>$1</h2>");
+
+    // h1
+    line = line.replace(/^\s*#\s+(.*)/, "<h1>$1</h1>");
+
+    // blockquote
+    line = line.replace(/^\s*>\s+(.*)/, "<blockquote>$1</blockquote>");
+
+    result += line;
+  }
+
+  // images
+  result = result.replace(
+    /!\[([^\]]+)\]\(([^)]+)\)/g,
+    '<img alt="$1" src="$2">'
+  );
+
+  // links
+  result = result.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2">$1</a>'
+  );
+
+  // bold **text**
+  result = result.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+  // bold __text__
+  result = result.replace(/__(.*?)__/g, "<strong>$1</strong>");
+
+  // italic *text*
+  result = result.replace(/\*(.*?)\*/g, "<em>$1</em>");
+
+  // italic _text_
+  result = result.replace(/_(.*?)_/g, "<em>$1</em>");
+
+  return result;
+}
+
+markdownInput.addEventListener("input", () => {
+  const html = convertMarkdown();
+
+  htmlOutput.textContent = html; // raw HTML
+  preview.innerHTML = html;      // rendered HTML
+});
+
+** end of script.js **
+

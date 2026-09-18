@@ -1,0 +1,59 @@
+** start of script.js **
+
+const ball = {
+  category : "object",
+  question: "Does it bounce?",
+  choices: ["yes", "no", "maybe"],
+  answer: "yes"
+}
+
+const magic = {
+  category : "object",
+  question: "Does it exist?",
+  choices: ["yes", "no", "maybe"],
+  answer: "maybe"
+}
+
+const cats = {
+  category : "animal",
+  question: "Are they cute?",
+  choices: ["yes", "no", "maybe"],
+  answer: "yes"
+}
+
+const dragons = {
+  category : "animal",
+  question: "Do they exist?",
+  choices: ["yes", "no", "maybe"],
+  answer: "no"
+}
+
+const plant = {
+  category : "object",
+  question: "Is it green?",
+  choices: ["yes", "no", "maybe"],
+  answer: "maybe"
+}
+
+const questions =[ball, magic, cats, dragons, plant]
+
+const getRandomQuestion = (questionsArray) => {
+  const random = Math.floor(Math.random() * questionsArray.length);
+  return questionsArray[random];
+}
+
+const getRandomComputerChoice = (choicesArray) => {
+  const random2 = Math.floor(Math.random() * choicesArray.length);
+  return choicesArray[random2];
+}
+
+const getResults = (getRandomQuestion, getRandomComputerChoice) => {
+  if (getRandomComputerChoice === getRandomQuestion.answer) {
+    return "The computer's choice is correct!";
+  } else {
+    return `The computer's choice is wrong. The correct answer is: ${getRandomQuestion.answer}`;
+  }
+}
+
+** end of script.js **
+

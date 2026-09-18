@@ -1,0 +1,16 @@
+** start of script.js **
+
+function spinalCase(str) {
+  return str
+    // Insert space between lowercase and uppercase (camelCase fix)
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    
+    // Replace spaces and underscores with hyphens
+    .replace(/[\s_]+/g, "-")
+    
+    // Convert everything to lowercase
+    .toLowerCase();
+}
+
+** end of script.js **
+

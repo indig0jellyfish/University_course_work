@@ -1,0 +1,19 @@
+** start of script.js **
+
+const findLongestWordLength = (sentence) => {
+  let words = sentence.split(" "); 
+  let count=0
+  
+  for (let char of words){
+    if (char.length > count){
+      count=char.length
+    }
+  }
+  return count
+}
+
+let sentence="The quick brown fox jumped over the lazy dog"
+console.log(findLongestWordLength(sentence))
+
+** end of script.js **
+

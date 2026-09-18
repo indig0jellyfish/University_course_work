@@ -1,0 +1,63 @@
+** start of script.js **
+
+let lunches = []
+
+const addLunchToEnd = (array, string) => {
+  array.push(string)
+  console.log(`${string} added to the end of the lunch menu.`)
+  return array
+}
+
+const addLunchToStart = (array, string) => {
+  array.unshift(string)
+  console.log(`${string} added to the start of the lunch menu.`)
+  return array
+}
+
+const removeFirstLunch  = (array) => {
+  let firstt
+  if (array.length > 0) {
+    firstt = array[0]
+    array.shift()
+    console.log (`${firstt} removed from the start of the lunch menu.`)
+  }else{
+    console.log("No lunches to remove.")
+  }
+  return array
+}
+
+const removeLastLunch = (array) => {
+  let elem
+  let leng =array.length-1
+  if (array.length > 0) {
+    elem = array[leng]
+    array.pop()
+    console.log(`${elem} removed from the end of the lunch menu.`)
+  }else{
+    console.log("No lunches to remove.")
+  }
+  return array
+}
+
+const getRandomLunch = (array) => {
+  if (array.length > 0) {
+    let max = array.length
+    let random = Math.floor(Math.random() * max)
+    console.log(`Randomly selected lunch: ${array[random]}`)
+  }else{
+    console.log("No lunches available.")
+  }
+  return array
+}
+
+const showLunchMenu  = (array) => {
+  if (array.length > 0) {
+    console.log(`Menu items: ${array.join(", ")}`)
+  }else{
+    console.log("The menu is empty.")
+  }
+  return array
+}
+
+** end of script.js **
+

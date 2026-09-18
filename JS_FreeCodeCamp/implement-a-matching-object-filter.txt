@@ -1,0 +1,22 @@
+** start of script.js **
+
+function whatIsInAName(collection, source) {
+  const sourceKeys = Object.keys(source);
+
+  return collection.filter(function (obj) {
+
+    for (let i = 0; i < sourceKeys.length; i++) {
+      const key = sourceKeys[i];
+
+      // If the object doesn't have the key
+      // OR the value doesn't match
+      if (!obj.hasOwnProperty(key) || obj[key] !== source[key]) {
+        return false; // This object should NOT be included
+      }
+    }
+    return true; // All keys matched, include this object 
+    });
+}
+
+** end of script.js **
+

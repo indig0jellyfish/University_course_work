@@ -1,0 +1,384 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Customer Complaint Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Complaint Form</h1>
+    <form id="form">
+        <fieldset id="personal-info">
+            <div>
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="John Doe">
+            </div>
+
+            <div>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="example@domain.com">
+            </div>
+        </fieldset>
+        <hr>
+        <fieldset id="product-info">
+            <div>
+                <label for="order-no">Order No:</label>
+                <input type="text" id="order-no" name="order-no" placeholder="2024######">
+            </div>
+            <div>
+                <label for="product-code">Product Code:</label>
+                <input type="text" id="product-code" name="product-code" placeholder="XX##-X###-XX#">
+            </div>
+            <div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1">
+            </div>
+        </fieldset>
+
+        <fieldset id="complaints-group">
+            <legend>Complaint Reason:</legend>
+            <div>
+                <input type="checkbox" id="damaged-product" name="complaint" value="damaged-product">
+                <label for="damaged-product">Damaged Product</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="nonconforming-product" name="complaint" value="nonconforming-product">
+                <label for="nonconforming-product">Nonconforming Product</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="delayed-dispatch" name="complaint" value="delayed-dispatch">
+                <label for="delayed-dispatch">Delayed Dispatch</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="other-complaint" name="complaint" value="other">
+                <label for="other-complaint">Other</label>
+            </div>
+        </fieldset>
+
+        <fieldset id="complaint-description-container">
+            <legend>Description of Complaint Reason</legend>
+            <textarea placeholder="Describe the reason of your complaint in at least 20 characters"
+                name="complaint-textarea" id="complaint-description"></textarea>
+        </fieldset>
+
+        <fieldset id="solutions-group">
+            <legend>Desired Solution</legend>
+            <input type="radio" name="solutions" id="refund" value="refund">
+            <label for="refund">Refund</label>
+
+            <input type="radio" name="solutions" id="exchange" value="exchange">
+            <label for="exchange">Exchange</label>
+
+            <input type="radio" name="solutions" id="other-solution" value="other">
+            <label for="other-solution">Other</label>
+        </fieldset>
+
+        <fieldset id="solution-description-container">
+            <legend>Description of Desired Solution</legend>
+            <textarea placeholder="Describe the desired solution to your issue in at least 20 characters"
+                name="solution-textarea" id="solution-description"></textarea>
+        </fieldset>
+        <div id="btn-container">
+            <button type="submit" id="submit-btn">Submit</button>
+            <span id="message-box" aria-live="polite"></span>
+        </div>
+
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+#form {
+    max-width: 70%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px;
+}
+
+input {
+    border-color: rgb(118, 118, 118);
+}
+
+#personal-info input, #product-info input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+fieldset {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: rgb(118, 118, 118);
+}
+
+textarea {
+    width: 100%;
+    border-color: rgb(118, 118, 118);
+}
+
+#btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#submit-btn, #clear-btn {
+    margin: 10px 15px 0;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const fullName = document.getElementById("full-name");
+const email = document.getElementById("email");
+const orderNo = document.getElementById("order-no");
+const productCode = document.getElementById("product-code");
+const quantity = document.getElementById("quantity");
+
+const complaintsGroup = document.getElementById("complaints-group");
+const complaints = complaintsGroup.querySelectorAll("input[type='checkbox']");
+const otherComplaint = document.getElementById("other-complaint");
+const complaintDescription = document.getElementById("complaint-description");
+
+const solutionsGroup = document.getElementById("solutions-group");
+const solutions = solutionsGroup.querySelectorAll("input[type='radio']");
+const otherSolution = document.getElementById("other-solution");
+const solutionDescription = document.getElementById("solution-description");
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const orderRegex = /^2024\d{6}$/;
+const productRegex = /^[A-Za-z]{2}\d{2}-[A-Za-z]\d{3}-[A-Za-z]{2}\d$/;
+
+function setBorder(element, valid) {
+  if (valid === true) {
+    element.style.borderColor = "green";
+  } else {
+    element.style.borderColor = "red";
+  }
+}
+
+function validateForm() {
+  const result = {};
+  if (fullName.value.trim() !== "") {
+    result["full-name"] = true;
+  } else {
+    result["full-name"] = false;
+  }
+
+  if (emailRegex.test(email.value)) {
+    result["email"] = true;
+  } else {
+    result["email"] = false;
+  }
+
+  if (orderRegex.test(orderNo.value)) {
+    result["order-no"] = true;
+  } else {
+    result["order-no"] = false;
+  }
+
+  if (productRegex.test(productCode.value)) {
+    result["product-code"] = true;
+  } else {
+    result["product-code"] = false;
+  }
+
+  const q = Number(quantity.value);
+
+  if (Number.isInteger(q) && q > 0) {
+    result["quantity"] = true;
+  } else {
+    result["quantity"] = false;
+  }
+
+  let complaintChecked = false;
+
+  for (let i = 0; i < complaints.length; i++) {
+    if (complaints[i].checked) {
+      complaintChecked = true;
+    }
+  }
+
+  result["complaints-group"] = complaintChecked;
+
+  if (otherComplaint.checked) {
+    if (complaintDescription.value.trim().length >= 20) {
+      result["complaint-description"] = true;
+    } else {
+      result["complaint-description"] = false;
+    }
+  } else {
+    result["complaint-description"] = true;
+  }
+
+  let solutionChecked = false;
+
+  for (let i = 0; i < solutions.length; i++) {
+    if (solutions[i].checked) {
+      solutionChecked = true;
+    }
+  }
+
+  result["solutions-group"] = solutionChecked;
+
+  if (otherSolution.checked) {
+    if (solutionDescription.value.trim().length >= 20) {
+      result["solution-description"] = true;
+    } else {
+      result["solution-description"] = false;
+    }
+  } else {
+    result["solution-description"] = true;
+  }
+  return result;
+}
+
+function isValid(obj) {
+  for (const key in obj) {
+    if (obj[key] !== true) {
+      return false;
+    }
+  }
+  return true;
+}
+
+fullName.addEventListener("change", function() {
+  let valid;
+  if (fullName.value.trim() !== "") {
+    valid = true;
+  } else {
+    valid = false;
+  }
+  setBorder(fullName, valid);
+});
+
+email.addEventListener("change", function() {
+  let valid;
+  if (emailRegex.test(email.value)) {
+    valid = true;
+  } else {
+    valid = false;
+  }
+  setBorder(email, valid);
+});
+
+orderNo.addEventListener("change", function() {
+  let valid;
+  if (orderRegex.test(orderNo.value)) {
+    valid = true;
+  } else {
+    valid = false;
+  }
+  setBorder(orderNo, valid);
+});
+
+productCode.addEventListener("change", function() {
+  let valid;
+  if (productRegex.test(productCode.value)) {
+    valid = true;
+  } else {
+    valid = false;
+  }
+  setBorder(productCode, valid);
+});
+
+quantity.addEventListener("change", function() {
+  const q = Number(quantity.value);
+  let valid;
+  if (Number.isInteger(q) && q > 0) {
+    valid = true;
+  } else {
+    valid = false;
+  }
+  setBorder(quantity, valid);
+});
+
+for (let i = 0; i < complaints.length; i++) {
+  complaints[i].addEventListener("change", function() {
+    let valid = false;
+    for (let j = 0; j < complaints.length; j++) {
+      if (complaints[j].checked) {
+        valid = true;
+      }
+    }
+    setBorder(complaintsGroup, valid);
+  });
+}
+
+complaintDescription.addEventListener("change", function() {
+  if (otherComplaint.checked) {
+    let valid;
+    if (complaintDescription.value.trim().length >= 20) {
+      valid = true;
+    } else {
+      valid = false;
+    }
+    setBorder(complaintDescription, valid);
+  }
+});
+
+for (let i = 0; i < solutions.length; i++) {
+  solutions[i].addEventListener("change", function() {
+    let valid = false;
+    for (let j = 0; j < solutions.length; j++) {
+      if (solutions[j].checked) {
+        valid = true;
+      }
+    }
+    setBorder(solutionsGroup, valid);
+  });
+}
+
+solutionDescription.addEventListener("change", function() {
+  if (otherSolution.checked) {
+    let valid;
+    if (solutionDescription.value.trim().length >= 20) {
+      valid = true;
+    } else {
+      valid = false;
+    }
+    setBorder(solutionDescription, valid);
+  }
+});
+
+form.addEventListener("submit", function(e) {
+  const validation = validateForm();
+  if (!isValid(validation)) {
+    e.preventDefault();
+    if (!validation["full-name"]) setBorder(fullName, false);
+    if (!validation["email"]) setBorder(email, false);
+    if (!validation["order-no"]) setBorder(orderNo, false);
+    if (!validation["product-code"]) setBorder(productCode, false);
+    if (!validation["quantity"]) setBorder(quantity, false);
+    if (!validation["complaints-group"]) setBorder(complaintsGroup, false);
+    if (!validation["complaint-description"]) setBorder(complaintDescription, false);
+    if (!validation["solutions-group"]) setBorder(solutionsGroup, false);
+    if (!validation["solution-description"]) setBorder(solutionDescription, false);
+  }
+});
+** end of script.js **
+

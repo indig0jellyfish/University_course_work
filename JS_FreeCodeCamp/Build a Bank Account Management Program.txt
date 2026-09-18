@@ -1,0 +1,74 @@
+// 1. Create class
+class BankAccount {
+  constructor() {
+    this.balance = 0;
+    this.transactions = [];
+  }
+
+  // 2. Deposit
+  deposit(amount) {
+    if (amount <= 0) {
+      return "Deposit amount must be greater than zero.";
+    }
+
+    this.balance += amount;
+
+    this.transactions.push({
+      type: "deposit",
+      amount: amount
+    });
+
+    return `Successfully deposited $${amount}. New balance: $${this.balance}`;
+  }
+
+  // 3. Withdraw
+  withdraw(amount) {
+    if (amount <= 0 || amount > this.balance) {
+      return "Insufficient balance or invalid amount.";
+    }
+
+    this.balance -= amount;
+
+    this.transactions.push({
+      type: "withdraw",
+      amount: amount
+    });
+
+    return `Successfully withdrew $${amount}. New balance: $${this.balance}`;
+  }
+
+  // 4. Check balance
+  checkBalance() {
+    return `Current balance: $${this.balance}`;
+  }
+
+  // 5. List deposits
+  listAllDeposits() {
+    const deposits = this.transactions
+      .filter(t => t.type === "deposit")
+      .map(t => t.amount);
+
+    return `Deposits: ${deposits.join(",")}`;
+  }
+
+  // 6. List withdrawals
+  listAllWithdrawals() {
+    const withdrawals = this.transactions
+      .filter(t => t.type === "withdraw")
+      .map(t => t.amount);
+
+    return `Withdrawals: ${withdrawals.join(",")}`;
+  }
+}
+
+
+// 7. Create account
+const myAccount = new BankAccount();
+
+
+// 8. Add transactions (at least 5, 2 deposits, 2 withdrawals, balance > 100)
+myAccount.deposit(200);
+myAccount.deposit(50);
+myAccount.withdraw(30);
+myAccount.deposit(40);
+myAccount.withdraw(20);

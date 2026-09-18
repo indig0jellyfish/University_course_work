@@ -1,0 +1,16 @@
+** start of script.js **
+
+const bouncer = (array) => {
+  let newArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (Boolean(array[i])) {
+      newArray.push(array[i]);
+    }
+  }
+
+  return newArray;
+}
+
+** end of script.js **
+

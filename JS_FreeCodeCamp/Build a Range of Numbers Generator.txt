@@ -1,0 +1,9 @@
+function rangeOfNumbers(startNum, endNum) {
+  // Base case
+  if (startNum === endNum) {
+    return [startNum];
+  }
+
+  // Recursive case
+  return [startNum, ...rangeOfNumbers(startNum + 1, endNum)];
+}

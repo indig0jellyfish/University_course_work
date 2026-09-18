@@ -1,0 +1,9 @@
+** start of script.js **
+
+const booWho = (arg) => {
+  return typeof arg === "boolean";
+};
+
+
+** end of script.js **
+

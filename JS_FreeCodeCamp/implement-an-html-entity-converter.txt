@@ -1,0 +1,26 @@
+** start of script.js **
+
+const convertHTML = (string) => {
+  const entities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;"
+  }
+
+  let result = "";
+
+  for (let char of string) {
+    if (entities[char]) {
+      result = result + entities[char];
+    } else {
+      result = result + char
+    }
+  }
+
+  return result
+};
+
+** end of script.js **
+

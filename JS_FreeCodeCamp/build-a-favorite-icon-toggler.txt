@@ -1,0 +1,79 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Favorite Icon Toggler</title>
+    <link rel="stylesheet" href="styles.css" />
+    
+  </head>
+
+  <body>
+  <h1>Art Supplies</h1>
+  <ul class="item-list">
+    <li>120 gm paper
+      <button class="favorite-icon">&#9825;</button>
+      </li><hr>
+    <li>Watercolor set
+      <button class="favorite-icon">&#9825;</button>
+      </li><hr>
+    <li>Lead Pencil 6B
+      <button class="favorite-icon">&#9825;</button>
+      </li><hr>
+    </ul>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+}
+
+.item-list li {
+  margin: 15px 0;
+}
+
+.favorite-icon {
+  font-size: 20px;
+  background-color: transparent; 
+  border: none;  
+  cursor: pointer;
+}
+
+.filled {
+  color: red;
+  transform: scale(1.2);
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+let button = document.querySelectorAll(".favorite-icon")
+
+button.forEach(button => {
+    button.addEventListener("click", ()=>{
+    button.classList.toggle("filled")
+
+    if(button.classList.contains("filled")){
+      button.innerHTML = "&#10084"
+    }else{
+      button.innerHTML = "&#9825"
+    }
+  })
+})
+
+
+** end of script.js **
+

@@ -1,0 +1,56 @@
+// 1. Project statuses
+const projectStatus = {
+  PENDING: { description: "Pending Execution" },
+  SUCCESS: { description: "Executed Successfully" },
+  FAILURE: { description: "Execution Failed" }
+};
+
+
+// 2. ProjectIdea class
+class ProjectIdea {
+  constructor(title, description) {
+    this.title = title;
+    this.description = description;
+    this.status = projectStatus.PENDING;
+  }
+
+  // update status
+  updateProjectStatus(newStatus) {
+    this.status = newStatus;
+  }
+}
+
+
+// 3. ProjectIdeaBoard class
+class ProjectIdeaBoard {
+  constructor(title) {
+    this.title = title;
+    this.ideas = [];
+  }
+
+  // add idea
+  pin(idea) {
+    this.ideas.push(idea);
+  }
+
+  // remove idea
+  unpin(idea) {
+    this.ideas = this.ideas.filter(i => i !== idea);
+  }
+
+  // count ideas
+  count() {
+    return this.ideas.length;
+  }
+
+  // format output
+  formatToString() {
+    let result = `${this.title} has ${this.count()} idea(s)\n`;
+
+    this.ideas.forEach(idea => {
+      result += `${idea.title} (${idea.status.description}) - ${idea.description}\n`;
+    });
+
+    return result;
+  }
+}

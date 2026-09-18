@@ -1,0 +1,24 @@
+** start of script.js **
+
+function translatePigLatin(str) {
+  // Check if word starts with vowel
+  if (/^[aeiou]/.test(str)) {
+    return str + "way";
+  }
+
+  // Find first vowel position
+  const firstVowelIndex = str.search(/[aeiou]/);
+
+  // If no vowels found
+  if (firstVowelIndex === -1) {
+    return str + "ay";
+  }
+
+  // Move consonant cluster to end + add "ay"
+  return str.slice(firstVowelIndex) +
+         str.slice(0, firstVowelIndex) +
+         "ay";
+}
+
+** end of script.js **
+

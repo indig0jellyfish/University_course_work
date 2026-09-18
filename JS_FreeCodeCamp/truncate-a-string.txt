@@ -1,0 +1,14 @@
+** start of script.js **
+
+const truncateString =(string, number)=>{
+  let length=string.length
+  if (length>number){
+    string=string.slice(0, number)+ "..."
+  }
+  return string
+}
+
+console.log(truncateString)
+
+** end of script.js **
+

@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #ddd;
+}
+
+/* THEMES */
+
+.theme-light {
+  background-color: #ffffff;
+  color: #222;
+}
+
+.theme-dark {
+  background-color: #222;
+  color: #ffffff;
+}
+
+.theme-ocean {
+  background-color: #0077b6;
+  color: #ffffff;
+}
+
+.theme-rose {
+  background-color: #F3D1C8;
+  color: #222;
+}

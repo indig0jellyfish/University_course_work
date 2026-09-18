@@ -1,0 +1,46 @@
+** start of script.js **
+
+const getAverage = (array) => {
+  let averageScore = 0;
+  let count = 0;
+  for (let i=0; i<array.length; i++){
+    count++
+    averageScore = averageScore + array[i]
+  }
+  return averageScore / count
+}
+
+const getGrade = (score) => {
+  if (score === 100) {
+    return "A+";
+  } else if (score >= 90) {
+    return "A";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score >= 60) {
+    return "D";
+  } else {
+    return "F";
+  }
+}
+
+const hasPassingGrade = (score) => {
+  if (getGrade(score) !== "F"){
+    return true
+  }else{
+    return false
+  }
+}
+
+const studentMsg = (array, score) => {
+  if (hasPassingGrade (score)) {
+    return `Class average: ${getAverage(array)}. Your grade: ${getGrade(score)}. You passed the course.`
+  }else{
+    return `Class average: ${getAverage(array)}. Your grade: ${getGrade(score)}. You failed the course.`
+  }
+}
+
+** end of script.js **
+

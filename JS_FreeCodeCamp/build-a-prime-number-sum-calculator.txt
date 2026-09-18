@@ -1,0 +1,33 @@
+** start of script.js **
+
+const sumPrimes = (num) => {
+  if (num < 2) {
+    return 0;
+  }
+
+  function isPrime(n) {
+    if (n < 2) return false;
+
+    for (let i = 2; i < n; i++) {
+      if (n % i === 0) {
+        return false; // Not prime
+      }
+    }
+
+    return true; // Prime
+  }
+
+  let sum = 0;
+
+  // Check every number from 2 up to num
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i)) {
+      sum += i;
+    }
+  }
+
+  return sum;
+}
+
+** end of script.js **
+

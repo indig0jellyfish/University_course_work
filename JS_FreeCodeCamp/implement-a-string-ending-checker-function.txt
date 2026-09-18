@@ -1,0 +1,14 @@
+** start of script.js **
+
+const confirmEnding = (stringOne, stringTwo) =>{
+  let lengthTwo= -stringTwo.length
+  let lengthOne = stringOne.slice(lengthTwo);
+  if (stringTwo === lengthOne){
+    return true
+  }else{
+    return false
+  }
+}
+
+** end of script.js **
+

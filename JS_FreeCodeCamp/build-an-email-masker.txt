@@ -1,0 +1,17 @@
+** start of script.js **
+
+const maskEmail = (email) => {
+  let result= email
+  let end = email.slice(email.indexOf("@")-1)
+  let first=email[0]
+  let between = email.length - end.length - first.length;
+  let stars="*"
+  result=first+stars.repeat(between)+end
+  return result
+}
+
+let email="apple.pie@example.com"
+console.log(maskEmail(email))
+
+** end of script.js **
+

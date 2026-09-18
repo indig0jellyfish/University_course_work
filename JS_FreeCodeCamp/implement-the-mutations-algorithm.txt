@@ -1,0 +1,15 @@
+** start of script.js **
+
+const mutation = (array) => {
+  let word1=array[0].toLowerCase()
+  let word2=array[1].toLowerCase()
+  for (const char of word2) {
+    if (!(word1.includes(char))) {
+      return false
+    }
+  }
+  return true
+}
+
+** end of script.js **
+

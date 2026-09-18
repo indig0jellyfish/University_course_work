@@ -1,0 +1,23 @@
+** start of script.js **
+
+const pyramid = (string, rows, value) => {
+  let result = "\n";
+  for (let i = 0; i < rows; i++) {
+    let currentRow;
+
+    if (value) {
+      currentRow = rows - i - 1;
+    } else {
+      currentRow = i;
+    }
+
+    let spaces = rows - currentRow - 1;
+    let characters = currentRow * 2 + 1;
+    result = result + " ".repeat(spaces) + string.repeat(characters) + "\n";
+  }
+  return result;
+}
+
+
+** end of script.js **
+
